@@ -1,0 +1,108 @@
+# Набор тестов для эндпоинтов которые можно запустить
+# в VSCode с помощью плагина  REST Client
+# Найти можно по идентификатору: humao.rest-client
+# Tunder Client не позволяет свободно импортировать-экспортировать записи,
+# поэтому перешел на этот плагин. Он тоже хорош :-)
+# {
+#     "title": "Black Swan",
+#     "author": "Nassim Taleb", #Robert Martin
+#     "pages": 204,
+#     "year": 2010
+# }
+
+# Создаем книгу 
+POST http://localhost:8000/api/v1/books/ HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Clean Code",
+    "author": "Robert Martin", 
+    "pages": 204,
+    "year": 2010,
+    "seller_id":1
+}
+
+###
+
+# Получаем список книг
+GET http://localhost:8000/api/v1/books/ HTTP/1.1
+
+###
+
+# Получаем одну книгу по ее ИД
+GET http://localhost:8000/api/v1/books/3 HTTP/1.1
+
+###
+
+# Обновляем поля в данных о книге
+PUT http://localhost:8000/api/v1/books/2 HTTP/1.1
+content-type: application/json
+
+{
+    "title": "Clean Code",
+    "author": "Robert Martin",
+    "count_pages": 100,
+    "year": 2007,
+    "id": 0,
+    "seller_id":2
+}
+
+###
+
+# Удаляем книгу
+DELETE http://localhost:8000/api/v1/books/2 HTTP/1.1
+content-type: application/json
+
+###
+
+# регистрации продавца в системе
+POST  http://localhost:8000/api/v1/sellers/ HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Elena",
+    "last_name": "Ruchkova",
+    "mail": "ek@du.ru",
+    "password": "gl#Jg67",
+    "books": [] 
+   
+}
+
+###
+
+# для получения списка всех продавцов 
+#(ВНИМАНИЕ! В ответе ручки не должны возвращаться поля password. 
+#Это будет дырой в безопасности!)
+GET  http://localhost:8000/api/v1/sellers/ HTTP/1.1
+content-type: application/json
+
+###
+
+# для просмотра данных о конкретном продавце 
+#(ВНИМАНИЕ! В ответе ручки не должны возвращаться поля password. 
+#Это будет дырой в безопасности!)
+GET  http://localhost:8000/api/v1/sellers/3 HTTP/1.1
+content-type: application/json
+
+###
+#для обновления данных о продавце (без обновления книг и пароля)
+
+PUT http://localhost:8000/api/v1/sellers/1 HTTP/1.1
+content-type: application/json
+
+{
+    "first_name": "Elena3",
+    "last_name": "Ruchkova",
+    "mail": "erer@2du.ru"   
+    
+}
+
+###
+#для удаления данных о продавце. 
+#Вместе с продавцом должны удаляться размещенные им книги.
+DELETE http://localhost:8000/api/v1/sellers/1 HTTP/1.1
+
+
+
+
+
