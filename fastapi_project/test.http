@@ -81,13 +81,13 @@ content-type: application/json
 # для просмотра данных о конкретном продавце 
 #(ВНИМАНИЕ! В ответе ручки не должны возвращаться поля password. 
 #Это будет дырой в безопасности!)
-GET  http://localhost:8000/api/v1/sellers/3 HTTP/1.1
+GET  http://localhost:8000/api/v1/sellers/2 HTTP/1.1
 content-type: application/json
 
 ###
 #для обновления данных о продавце (без обновления книг и пароля)
 
-PUT http://localhost:8000/api/v1/sellers/1 HTTP/1.1
+PUT http://localhost:8000/api/v1/sellers/2 HTTP/1.1
 content-type: application/json
 
 {
