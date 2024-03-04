@@ -3,15 +3,35 @@
     // Hover to view descriptions of existing attributes.
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
-    "configurations": [
+    "configurations": [    
+      
         {
             "name": "Python: FastAPI",
-            "type": "python",
+            "type": "debugpy",
             "request": "launch",
             "module": "uvicorn",
-            "args": ["main:app", "--host", "127.0.0.1", "--reload"],
+            "args": ["src.main:app", "--host", "127.0.0.1", "--reload"], 
             "jinja": true,
-            "justMyCode": false
+            "justMyCode": false,
+            "env": {
+                "PYDEVD_DISABLE_FILE_VALIDATION": "1"
+              }
+            },
+            {
+              "name": "Project Tests",
+              "type": "debugpy",
+              "request": "launch",
+              "module": "pytest",
+              "console": "integratedTerminal",
+              "cwd": "${workspaceFolder}/src", 
+              "args": [
+                "tests",
+                "-ra",
+                "--color=yes",
+                "--verbosity=2",
+                "-c=${workspaceFolder}/src/pytest.ini"
+              ],
+              "justMyCode": false
+            }
+          ]
         }
-    ]
-}

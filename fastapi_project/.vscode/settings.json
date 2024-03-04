@@ -1,5 +1,5 @@
 {
-    "python.analysis.extraPaths": ["E:/МТС.Меta/GIT/FastApi/fastapi_project/main.py"],
+    "python.analysis.extraPaths":  ["${workspaceFolder}/srс"],
     // "python.testing.pytestArgs": [
     //   "tests"
     // ],
@@ -12,14 +12,13 @@
     // "pythonTestExplorer.outputs.collectOutputs": true,
     // "debug.allowBreakpointsEverywhere": true,
     // "python.analysis.enablePytestSupport": true,
-    "isort.args": [
-      "--settings-file",
-      "pyproject.toml"
-    ],
-    "black-formatter.args": [
-      "--config",
-      "pyproject.toml"
-    ],
+    "isort.args": ["--settings-file", "pyproject.toml"],
+    "black-formatter.args": ["--config", "pyproject.toml"],
+    "isort.importStrategy": "fromEnvironment",
+    "flake8.importStrategy": "fromEnvironment",
+    "black-formatter.importStrategy": "fromEnvironment",
     "flake8.args": ["--config=.flake8"],
-    "mypy-type-checker.args": ["--config-file=pyproject.toml"]
+    "python.testing.pytestArgs": ["src/tests"],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
   }
