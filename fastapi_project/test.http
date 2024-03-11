@@ -19,7 +19,7 @@ content-type: application/json
     "author": "Robert Martin", 
     "pages": 204,
     "year": 2010,
-    "seller_id":1
+    "seller_id":2
 }
 
 ###
@@ -30,21 +30,21 @@ GET http://localhost:8000/api/v1/books/ HTTP/1.1
 ###
 
 # Получаем одну книгу по ее ИД
-GET http://localhost:8000/api/v1/books/3 HTTP/1.1
+GET http://localhost:8000/api/v1/books/2 HTTP/1.1
 
 ###
 
 # Обновляем поля в данных о книге
-PUT http://localhost:8000/api/v1/books/2 HTTP/1.1
+PUT http://localhost:8000/api/v1/books/1 HTTP/1.1
 content-type: application/json
 
 {
-    "title": "Clean Code",
-    "author": "Robert Martin",
+    "title": "Black Swan",
+    "author": "Nassim Taleb",
     "count_pages": 100,
     "year": 2007,
     "id": 0,
-    "seller_id":2
+    "seller_id":1
 }
 
 ###
@@ -81,19 +81,20 @@ content-type: application/json
 # для просмотра данных о конкретном продавце 
 #(ВНИМАНИЕ! В ответе ручки не должны возвращаться поля password. 
 #Это будет дырой в безопасности!)
-GET  http://localhost:8000/api/v1/sellers/3 HTTP/1.1
+GET  http://localhost:8000/api/v1/sellers/1 HTTP/1.1
 content-type: application/json
 
 ###
 #для обновления данных о продавце (без обновления книг и пароля)
 
-PUT http://localhost:8000/api/v1/sellers/1 HTTP/1.1
+PUT http://localhost:8000/api/v1/sellers/2 HTTP/1.1
 content-type: application/json
 
 {
-    "first_name": "Elena3",
+    "first_name": "Varvara",
     "last_name": "Ruchkova",
-    "mail": "erer@2du.ru"   
+    "mail": "erer@2du.ru",
+    "id":2
     
 }
 
